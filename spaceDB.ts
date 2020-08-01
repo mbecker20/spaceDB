@@ -2,6 +2,7 @@ import feathers, { Id, NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import { connect, Connection, db } from 'rethinkdb'
 import cors from 'cors'
+import saveProjectToLocal from './saveProjectToLocal'
 
 /*
 
@@ -13,7 +14,7 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 const GET_SAVENAMES = 'GET_SAVENAMES'
 const GET_SAVE = 'GET_SAVE'
 
-interface Save {
+export interface Save {
   id: string,
   savedState: any,
 }
@@ -26,7 +27,7 @@ class SaveService {
     .then(cursor => cursor.toArray())
     .then(nameArray => nameArray.map(nameObj => nameObj.id))
   }
-
+  
   async get(id: string, params?: Params) { 
     return db('main').table('saves').get(id).run(rethinkDBConnection)
     .then((doc: any) => doc.state )
@@ -88,6 +89,7 @@ connect({ host: 'localhost', port: 28015 }, (err, conn) => {
     throw err
   }
   rethinkDBConnection = conn
+  saveProjectToLocal('wavy', rethinkDBConnection)
 })
 
 
