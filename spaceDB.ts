@@ -42,7 +42,6 @@ class SaveService {
         res = 'not ok :('
         throw err
       }
-      res = save
     })
     return res
   }
