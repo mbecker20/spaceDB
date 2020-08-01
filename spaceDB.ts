@@ -89,9 +89,8 @@ connect({ host: 'localhost', port: 28015 }, (err, conn) => {
     throw err
   }
   rethinkDBConnection = conn
-  saveProjectToLocal('wavy', rethinkDBConnection)
 })
-
+ 
 
 
 
