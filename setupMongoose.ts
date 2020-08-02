@@ -23,3 +23,5 @@ id.save(function (err: {}, id: String) {
 }) 
 
 const Save = mongoose.model('Save', saveSchema)
+
+export default Save
