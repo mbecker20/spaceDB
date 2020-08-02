@@ -15,7 +15,6 @@
     "@feathersjs/socketio": "^4.5.7",
     "@types/cors": "^2.8.7",
     "@types/rethinkdb": "^2.3.16",
-    "cors": "^2.8.5",
-    "rethinkdb": "^2.4.2"
+    "cors": "^2.8.5"
   }
 }
