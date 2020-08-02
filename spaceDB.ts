@@ -23,6 +23,7 @@ export interface Save {
 class SaveService {
   async find(params?: Params) {
     // get array of all save names
+    console.log('bitch fuck')
     return ['yes', 'ok']
   }
   
