@@ -27,14 +27,15 @@ export interface Save {
 
 class SaveService {
   async find(params?: Params) {
+    // get array of all save names
   }
   
   async get(id: string, params?: Params) { 
-    
+    // id is savename, return the saved redux state
   }
 
   async create(save: Save) {
-    
+    // insert a save into the main database saves collection
   }
 
   async update(id: NullableId, data: any, params: Params) { }
