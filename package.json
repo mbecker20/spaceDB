@@ -14,9 +14,13 @@
     "@feathersjs/feathers": "^4.5.7",
     "@feathersjs/socketio": "^4.5.7",
     "@types/cors": "^2.8.7",
-    "@types/mongodb": "^3.5.25",
     "@types/rethinkdb": "^2.3.16",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "mongodb": "^3.6.0"
+    "feathers-errors": "^2.9.2",
+    "feathers-mongoose": "^8.3.1",
+    "feathers-rest": "^1.8.1",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.27"
   }
 }
