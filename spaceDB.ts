@@ -60,8 +60,8 @@ app.service('spaceDB-save-service').on('created', (save: any) => {
   
 });
 
-app.listen(3030).on('listening', () =>
-  console.log('spaceDB server listening on localhost:3030')
+app.listen(30300).on('listening', () =>
+  console.log('spaceDB server listening on localhost:30300')
 );
 
 
