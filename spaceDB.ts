@@ -1,6 +1,8 @@
 import feathers, { NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
+import Save from './setupMongoose'
+import service from 'feathers-mongoose'
 
 /*
 
@@ -12,33 +14,6 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 // -----------------------
 
 const url = 'mongodb://localhost:27017';
-
-
-export interface Save {
-  id: string,
-  savedState: any,
-}
-
-
-class SaveService {
-  async find(params?: Params) {
-    // get array of all save names
-    console.log('bitch fuck')
-    return ['yes', 'ok']
-  }
-  
-  async get(id: string, params?: Params) { 
-    // id is savename, return the saved redux state
-  }
-
-  async create(save: Save) {
-    // insert a save into the main database saves collection
-  }
-
-  async update(id: NullableId, data: any, params: Params) { }
-  async patch(id: NullableId, data: any, params: Params) { }
-  async remove(id: NullableId, params: Params) { }
-}
 
 // Creates an ExpressJS compatible Feathers application
 const app = express(feathers());
@@ -55,7 +30,7 @@ app.use(express.errorHandler());
 app.use(cors())
 
 // Register save service
-app.use('spaceDB-save-service', new SaveService());
+app.use('spaceDB-save-service', service({ Model: Save }));
 
 app.service('spaceDB-save-service').on('created', (save: any) => {
   
