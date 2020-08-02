@@ -23,6 +23,7 @@ export interface Save {
 class SaveService {
   async find(params?: Params) {
     // get array of all save names
+    return ['yes', 'ok']
   }
   
   async get(id: string, params?: Params) { 
