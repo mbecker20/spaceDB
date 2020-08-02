@@ -14,11 +14,6 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 const url = 'mongodb://localhost:27017';
 
 
-
-// find types
-const GET_SAVENAMES = 'GET_SAVENAMES'
-const GET_SAVE = 'GET_SAVE'
-
 export interface Save {
   id: string,
   savedState: any,
