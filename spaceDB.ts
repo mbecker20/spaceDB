@@ -29,16 +29,17 @@ class SaveService {
   async find(params?: Params) {
     // get array of all save names
     console.log('bitch fuck')
-    return ['why__']
+    return StateSaver.find({}, 'saveName').exec().then((saveNames) => {
+      return saveNames.map(doc => {
+        return doc.get('saveName')
+      })
+    })
   }
 
-  async get(saveName: string, params?: Params) {
+  async get(saveName: string) {
     // id is savename, return the saved redux state
     console.log('restoring space')
-    return StateSaver.findOne({ saveName: saveName }, (err: any, save: any) => {
-      if (err) throw err
-      return save
-    })
+    return StateSaver.findOne({ saveName: saveName }).exec()
     .then((save: any) => save.state)
   }
 
