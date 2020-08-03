@@ -9,8 +9,7 @@ function startServor() {
     reload: false,
     port: 8000,
   }).then(() => {
-    console.log('servor started')
-    console.log('connect on 192.169.1.81:8000')
+    console.log('space machine servor started. connect on 192.169.1.81:8000')
   })
 }
 
