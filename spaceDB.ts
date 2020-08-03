@@ -39,7 +39,7 @@ class SaveService {
   async get(saveName: string) {
     // id is savename, return the saved redux state
     console.log('restoring space')
-    return StateSaver.findOne({ saveName: saveName }).exec()
+    return StateSaver.findOne({ saveName }).exec()
     .then((save: any) => save.state)
   }
 
@@ -52,9 +52,23 @@ class SaveService {
     return 'submitted'
   }
 
-  async update(id: NullableId, data: any, params: Params) { }
+  async update(saveName: string, state: any, params: Params) {
+    StateSaver.deleteOne({ saveName }).exec()
+    StateSaver.create({ saveName, state }, (err: any, save: any) => {
+      if (err) throw err
+      console.log(save.id)
+      console.log(save.saveName)
+    })
+    return 'submitted'
+  }
+  
   async patch(id: NullableId, data: any, params: Params) { }
-  async remove(id: NullableId, params: Params) { }
+
+  async remove(saveName: string, params: Params) { 
+    return StateSaver.deleteOne({ saveName }).exec().then(() => {
+      return 'deleted'
+    })
+  }
 }
 // Creates an ExpressJS compatible Feathers application
 const app = express(feathers());
