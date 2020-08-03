@@ -1,15 +1,16 @@
-const servor = require('servor')
+//const servor = require('servor')
+const https = require('https')
 const fs = require('fs')
 
-const credentials = {
+const options = {
   key: fs.readFileSync('../key.pem'),
   cert: fs.readFileSync('../cert.pem'),
+  port: 443,
+  path: '/build',
 };
 
-console.log(`key: ${credentials.key}`)
-console.log(`cert: ${credentials.cert}`)
 
-function startServor() {
+/* function startServor() {
   servor({
     root: './space-machine',
     fallback: 'index.html',
@@ -23,4 +24,4 @@ function startServor() {
   })
 }
 
-export default startServor
+export default startServor */
