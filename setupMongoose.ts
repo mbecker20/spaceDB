@@ -12,4 +12,4 @@ saveSchema.methods.getID = function() {
   return this._id ? this._id : 'UNDEFINED' 
 }
 
-export const Save = model('Save', saveSchema)
+export const StateSaver = model('StateSaver', saveSchema)
