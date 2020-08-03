@@ -1,4 +1,10 @@
 const servor = require('servor')
+const fs = require('fs')
+
+const credentials = {
+  key: fs.readFileSync('../key.pem'),
+  cert: fs.readFileSync('../cert.pem'),
+};
 
 function startServor() {
   servor({
@@ -7,6 +13,7 @@ function startServor() {
     module: false,
     static: false,
     reload: false,
+    credentials, 
     port: 8000,
   }).then(() => {
     console.log('space machine servor started. connect on 192.169.1.81:8000')
