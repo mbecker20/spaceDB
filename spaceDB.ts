@@ -1,7 +1,7 @@
 import feathers, { NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
-import { Save } from './setupMongoose'
+import { StateSaver } from './setupMongoose'
 import mongoose from 'mongoose'
 //import service from 'feathers-mongoose'
 
@@ -38,7 +38,7 @@ class SaveService {
 
   async create(save: Save) {
     // insert a save into the main database saves collection
-    Save.create({ save }, (err: any, save: any) => {
+    StateSaver.create({ save }, (err: any, save: any) => {
       if (err) throw err
       console.log(save.id)
     })
