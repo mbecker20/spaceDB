@@ -21,7 +21,7 @@ db.once('open', function () {
 });
 
 export interface Save {
-  name: string,
+  saveName: string,
   state: any,
 }
 
@@ -45,6 +45,7 @@ class SaveService {
 
   async create(save: Save) {
     // insert a save into the main database saves collection
+    console.log(`creating ${save.saveName}`)
     StateSaver.create(save, (err: any, save: any) => {
       if (err) throw err
       console.log(save.id)
@@ -54,18 +55,18 @@ class SaveService {
 
   async update(saveName: string, state: any, params: Params) {
     //StateSaver.replaceOne({ saveName }, { saveName, state })
+    console.log(`updating ${saveName}`)
     StateSaver.deleteOne({ saveName }).exec()
     StateSaver.create({ saveName, state }, (err: any, save: any) => {
       if (err) throw err
-      console.log(save.id)
-      console.log(save.saveName)
     })
     return 'submitted'
   }
   
   async patch(id: NullableId, data: any, params: Params) { }
 
-  async remove(saveName: string, params: Params) { 
+  async remove(saveName: string, params: Params) {
+    console.log(`deleting ${saveName}`)
     return StateSaver.deleteOne({ saveName }).exec().then(() => {
       return 'deleted'
     })
