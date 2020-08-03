@@ -12,8 +12,7 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 
 */
 
-mongoose.connect('mongodb://localhost/main', { useNewUrlParser: true })
-
+mongoose.connect('mongodb://localhost/main', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
