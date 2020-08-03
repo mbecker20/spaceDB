@@ -34,6 +34,7 @@ class SaveService {
 
   async get(saveName: string, params?: Params) {
     // id is savename, return the saved redux state
+    console.log('restoring space')
     return StateSaver.findOne({ saveName: saveName }, (err: any, save: any) => {
       if (err) throw err
       return save
