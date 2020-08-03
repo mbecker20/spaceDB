@@ -42,6 +42,7 @@ class SaveService {
       if (err) throw err
       console.log(save.id)
     })
+    return 'submitted'
   }
 
   async update(id: NullableId, data: any, params: Params) { }
