@@ -1,7 +1,7 @@
 import feathers, { NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
-import Save from './setupMongoose'
+import { Save } from './setupMongoose'
 import service from 'feathers-mongoose'
 
 /*
@@ -30,7 +30,7 @@ app.use(express.errorHandler());
 app.use(cors())
 
 // Register save service
-app.use('spaceDB-save-service', service({ Model: Save }));
+app.use('spaceDB-save-service', service({  }));
 
 app.service('spaceDB-save-service').on('created', (save: any) => {
   

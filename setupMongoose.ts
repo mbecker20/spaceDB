@@ -9,14 +9,12 @@ db.once('open', function () {
 });
 
 const saveSchema = new mongoose.Schema({
-  id: String,
+  _id: String,
   state: {},
 })
 
 saveSchema.methods.getID = function() {
-  const id = this.id ? this.id : 'UNDEFINED' 
+  return this._id ? this._id : 'UNDEFINED' 
 }
 
-const Save = mongoose.model('Save', saveSchema)
-
-export default Save
+export const Save = mongoose.model('Save', saveSchema)
