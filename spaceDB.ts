@@ -29,11 +29,15 @@ class SaveService {
   async find(params?: Params) {
     // get array of all save names
     console.log('bitch fuck')
-    return ['yes', 'ok']
+    return ['why__']
   }
 
-  async get(id: string, params?: Params) {
+  async get(saveName: string, params?: Params) {
     // id is savename, return the saved redux state
+    return StateSaver.findOne({ saveName: saveName }, (err: any, save: any) => {
+      if (err) throw err
+      return save.state
+    })
   }
 
   async create(save: Save) {
