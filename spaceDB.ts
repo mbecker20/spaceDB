@@ -3,6 +3,7 @@ import express from '@feathersjs/express'
 import cors from 'cors'
 import { StateSaver } from './setupMongoose'
 import mongoose from 'mongoose'
+import startServor from './startServor'
 //import service from 'feathers-mongoose'
 
 /*
@@ -96,6 +97,8 @@ app.service('spaceDB-save-service').on('created', (save: any) => {
 app.listen(30300).on('listening', () =>
   console.log('spaceDB server listening on localhost:30300')
 );
+
+startServor();
 
 
  
