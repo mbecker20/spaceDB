@@ -2,8 +2,8 @@ import feathers, { NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
 import { StateSaver } from './setupMongoose'
-import mongoose from 'mongoose'
-import startServor from './startServor'
+import mong from 'mongoose'
+import createServer from './startServor'
 //import service from 'feathers-mongoose'
 
 /*
@@ -12,8 +12,8 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 
 */
 
-mongoose.connect('mongodb://localhost/main', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection;
+mong.connect('mongodb://localhost/main', { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mong.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   // we're connected!
@@ -97,7 +97,7 @@ app.listen(30300).on('listening', () =>
   console.log('spaceDB server listening on localhost:30300')
 );
 
-startServor();
+createServer();
 
 
  
