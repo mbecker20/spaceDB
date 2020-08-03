@@ -2,7 +2,8 @@ import feathers, { NullableId, Params } from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
 import { Save } from './setupMongoose'
-import service from 'feathers-mongoose'
+import mongoose from 'mongoose'
+//import service from 'feathers-mongoose'
 
 /*
 
@@ -10,11 +11,43 @@ this server exposes an api for the space machine to interact with the rethinkDB 
 
 */
 
-// set up mongo connection
-// -----------------------
+mongoose.connect('mongodb://localhost/main', { useNewUrlParser: true })
 
-const url = 'mongodb://localhost:27017';
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+  console.log('mongoose n shit connecto')
+});
 
+export interface Save {
+  name: string,
+  savedState: any,
+}
+
+class SaveService {
+  async find(params?: Params) {
+    // get array of all save names
+    console.log('bitch fuck')
+    return ['yes', 'ok']
+  }
+
+  async get(id: string, params?: Params) {
+    // id is savename, return the saved redux state
+  }
+
+  async create(save: Save) {
+    // insert a save into the main database saves collection
+    Save.create({ save }, (err: any, save: any) => {
+      if (err) throw err
+      console.log(save.id)
+    })
+  }
+
+  async update(id: NullableId, data: any, params: Params) { }
+  async patch(id: NullableId, data: any, params: Params) { }
+  async remove(id: NullableId, params: Params) { }
+}
 // Creates an ExpressJS compatible Feathers application
 const app = express(feathers());
 
@@ -30,7 +63,7 @@ app.use(express.errorHandler());
 app.use(cors())
 
 // Register save service
-app.use('spaceDB-save-service', service({  }));
+app.use('spaceDB-save-service', new SaveService());
 
 app.service('spaceDB-save-service').on('created', (save: any) => {
   
