@@ -22,7 +22,7 @@ db.once('open', function () {
 
 export interface Save {
   name: string,
-  savedState: any,
+  state: any,
 }
 
 class SaveService {
@@ -38,7 +38,7 @@ class SaveService {
 
   async create(save: Save) {
     // insert a save into the main database saves collection
-    StateSaver.create({ saveData: save }, (err: any, save: any) => {
+    StateSaver.create(save, (err: any, save: any) => {
       if (err) throw err
       console.log(save.id)
     })

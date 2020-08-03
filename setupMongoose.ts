@@ -1,10 +1,8 @@
 import { Schema, model } from 'mongoose'
 
 const saveSchema = new Schema({
-  saveData: {
-    name: String,
-    state: {},
-  },
+  saveName: String,
+  state: {},
 })
 
 saveSchema.methods.getID = function() {
