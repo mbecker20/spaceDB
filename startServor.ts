@@ -6,6 +6,9 @@ const credentials = {
   cert: fs.readFileSync('../cert.pem'),
 };
 
+console.log(`key: ${credentials.key}`)
+console.log(`cert: ${credentials.cert}`)
+
 function startServor() {
   servor({
     root: './space-machine',
