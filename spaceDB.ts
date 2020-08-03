@@ -53,6 +53,7 @@ class SaveService {
   }
 
   async update(saveName: string, state: any, params: Params) {
+    StateSaver.replaceOne({ saveName }, { saveName, state })
     StateSaver.deleteOne({ saveName }).exec()
     StateSaver.create({ saveName, state }, (err: any, save: any) => {
       if (err) throw err
