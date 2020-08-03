@@ -4,6 +4,7 @@ function startServor() {
   servor({
     root: './space-machine',
     fallback: 'index.html',
+    static: true,
     port: 8000,
   }).then(() => {
     console.log('servor started')
