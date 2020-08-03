@@ -9,6 +9,14 @@ const options = {
   path: '/build',
 };
 
+function createServer() {
+  https.createServer(options, (req: any, res: any) => {
+    console.log(req)
+    console.log(res)
+  }).listen(8000)
+}
+
+export default createServer
 
 /* function startServor() {
   servor({
