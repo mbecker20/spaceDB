@@ -1,7 +1,6 @@
 import { Schema, model } from 'mongoose'
 
 const saveSchema = new Schema({
-  _id: String,
   saveData: {
     name: String,
     state: {},

@@ -38,7 +38,7 @@ class SaveService {
 
   async create(save: Save) {
     // insert a save into the main database saves collection
-    StateSaver.create({ save }, (err: any, save: any) => {
+    StateSaver.create({ saveData: save }, (err: any, save: any) => {
       if (err) throw err
       console.log(save.id)
     })
