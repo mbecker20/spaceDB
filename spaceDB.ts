@@ -36,6 +36,7 @@ class SaveService {
     // id is savename, return the saved redux state
     return StateSaver.findOne({ saveName: saveName }, (err: any, save: any) => {
       if (err) throw err
+      console.log(save)
       return save.state
     })
   }
