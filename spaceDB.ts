@@ -37,7 +37,7 @@ class SaveService {
     return StateSaver.findOne({ saveName: saveName }, (err: any, save: any) => {
       if (err) throw err
       console.log(save)
-      return save.state
+      return save
     })
   }
 
