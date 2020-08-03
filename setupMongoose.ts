@@ -1,6 +1,6 @@
+import { Schema, model } from 'mongoose'
 
-
-const saveSchema = new mongoose.Schema({
+const saveSchema = new Schema({
   _id: String,
   save: {
     name: String,
@@ -12,4 +12,4 @@ saveSchema.methods.getID = function() {
   return this._id ? this._id : 'UNDEFINED' 
 }
 
-export const Save = mongoose.model('Save', saveSchema)
+export const Save = model('Save', saveSchema)
