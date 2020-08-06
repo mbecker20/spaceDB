@@ -30,7 +30,7 @@ app.configure(express.rest());
 // Express middleware with a nicer error handler
 app.use(express.errorHandler());
 // Hopefully handles the cors error
-app.use(cors())
+app.use(cors());
 
 // Register save service
 app.use('spaceDB-save-service', new SaveService());
