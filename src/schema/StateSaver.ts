@@ -9,5 +9,7 @@ saveSchema.methods.getID = function() {
   return this._id ? this._id : 'UNDEFINED' 
 }
 
-export const StateSaver = model('StateSaver', saveSchema)
+const StateSaver = model('StateSaver', saveSchema)
+
+export default StateSaver
 
