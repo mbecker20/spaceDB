@@ -5,10 +5,6 @@ const saveSchema = new Schema({
   state: {},
 })
 
-saveSchema.methods.getID = function() {
-  return this._id ? this._id : 'UNDEFINED' 
-}
-
 const StateSaver = model('StateSaver', saveSchema)
 
 export default StateSaver
