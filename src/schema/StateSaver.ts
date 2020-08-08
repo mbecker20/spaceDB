@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose'
 
-const saveSchema = new Schema({
-  saveName: String,
+const projectSaveSchema = new Schema({
+  name: String,
   state: {},
 })
 
-const StateSaver = model('StateSaver', saveSchema)
+const ProjectSaver = model('Project', projectSaveSchema)
 
-export default StateSaver
+export default ProjectSaver
 

@@ -2,7 +2,8 @@ import feathers from '@feathersjs/feathers'
 import express from '@feathersjs/express'
 import cors from 'cors'
 import mong from 'mongoose'
-import SaveService from './services/SaveService'
+import ProjectSaveService from './services/ProjectSaveService'
+import ContainerSaveService from './services/ContainerSaveService'
 
 /*
 
@@ -33,11 +34,12 @@ app.use(express.errorHandler());
 app.use(cors());
 
 // Register save service
-app.use('spaceDB-save-service', new SaveService());
+app.use('project-save-service', new ProjectSaveService())
+app.use('container-save-service', new ContainerSaveService())
 
 app.listen(30300).on('listening', () =>
   console.log('spaceDB server listening on localhost:30300')
-);
+)
 
 
  
