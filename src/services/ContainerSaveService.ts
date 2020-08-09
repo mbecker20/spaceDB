@@ -1,4 +1,4 @@
-import ContainerSaver from '../schema/StateSaver'
+import ContainerSaver from '../schema/ContainerSaver'
 
 export interface ContainerSave {
   saveName: string,
@@ -7,7 +7,7 @@ export interface ContainerSave {
   connections: any,
 }
 
-class ProjectSaveService {
+class ContainerSaveService {
   async find() {
     // get array of all conatainer save names
     console.log('finding container saves')
@@ -58,4 +58,4 @@ class ProjectSaveService {
   }
 }
 
-export default ProjectSaveService
+export default ContainerSaveService

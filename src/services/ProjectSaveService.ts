@@ -1,4 +1,4 @@
-import ProjectSaver from '../schema/StateSaver'
+import ProjectSaver from '../schema/ProjectSaver'
 
 export interface ProjectSave {
   saveName: string,
