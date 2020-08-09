@@ -1,7 +1,7 @@
 import ContainerSaver from '../schema/StateSaver'
 
 export interface ContainerSave {
-  name: string,
+  saveName: string,
   containerID: string,
   modules: any,
   connections: any,
@@ -11,17 +11,17 @@ class ProjectSaveService {
   async find() {
     // get array of all conatainer save names
     console.log('finding container saves')
-    return ContainerSaver.find({}, 'name').exec().then(names => {
+    return ContainerSaver.find({}, 'saveName').exec().then(names => {
       return names.map(doc => {
-        return doc.get('name')
+        return doc.get('saveName')
       })
     })
   }
 
-  async get(name: string) {
+  async get(saveName: string) {
     // return saved container containerID / modules / connections
     console.log('restoring space')
-    return ContainerSaver.findOne({ name }).exec()
+    return ContainerSaver.findOne({ saveName }).exec()
       .then((save: any) => {
         return {
           containerID: save.containerID,
@@ -33,26 +33,26 @@ class ProjectSaveService {
 
   async create(save: ContainerSave) {
     // insert a save into the main database saves collection
-    console.log(`creating container ${save.name}`)
+    console.log(`creating container ${save.saveName}`)
     ContainerSaver.create(save, (err: any, save: any) => {
       if (err) throw err
     })
     return 'submitted'
   }
 
-  async update(name: string, containerSave: ContainerSave) {
+  async update(saveName: string, containerSave: ContainerSave) {
     //StateSaver.replaceOne({ saveName }, { saveName, state })
     console.log(`updating ${name}`)
-    ContainerSaver.deleteOne({ name }).exec()
+    ContainerSaver.deleteOne({ saveName }).exec()
     ContainerSaver.create(containerSave, (err: any) => {
       if (err) throw err
     })
     return 'submitted'
   }
 
-  async remove(name: string) {
-    console.log(`deleting ${name}`)
-    return ContainerSaver.deleteOne({ name }).exec().then(() => {
+  async remove(saveName: string) {
+    console.log(`deleting ${saveName}`)
+    return ContainerSaver.deleteOne({ saveName }).exec().then(() => {
       return 'deleted'
     })
   }

@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose'
 
 const containerSaveSchema = new Schema({
-  name: String,
+  saveName: String,
   containerID: String,
   modules: {},
   connections: {},

@@ -1,7 +1,7 @@
 import ProjectSaver from '../schema/StateSaver'
 
 export interface ProjectSave {
-  name: string,
+  saveName: string,
   state: any,
 }
 
@@ -9,42 +9,42 @@ class ProjectSaveService {
   async find() {
     // get array of all save names
     console.log('bitch fuck')
-    return ProjectSaver.find({}, 'name').exec().then(names => {
+    return ProjectSaver.find({}, 'saveName').exec().then(names => {
       return names.map(doc => {
-        return doc.get('name')
+        return doc.get('saveName')
       })
     })
   }
 
-  async get(name: string) {
+  async get(saveName: string) {
     // id is savename, return the saved redux state
     console.log('restoring space')
-    return ProjectSaver.findOne({ name }).exec()
+    return ProjectSaver.findOne({ saveName }).exec()
       .then((save: any) => save.state)
   }
 
   async create(save: ProjectSave) {
     // insert a save into the main database saves collection
-    console.log(`creating ${save.name}`)
+    console.log(`creating ${save.saveName}`)
     ProjectSaver.create(save, (err: any) => {
       if (err) throw err
     })
     return 'created'
   }
 
-  async update(name: string, state: any) {
+  async update(saveName: string, state: any) {
     //StateSaver.replaceOne({ saveName }, { saveName, state })
-    console.log(`updating ${name}`)
-    ProjectSaver.deleteOne({ name }).exec()
-    ProjectSaver.create({ name, state }, (err: any) => {
+    console.log(`updating ${saveName}`)
+    ProjectSaver.deleteOne({ saveName }).exec()
+    ProjectSaver.create({ saveName, state }, (err: any) => {
       if (err) throw err
     })
     return 'updated'
   }
 
-  async remove(name: string) {
-    console.log(`deleting ${name}`)
-    ProjectSaver.deleteOne({ name }).exec()
+  async remove(saveName: string) {
+    console.log(`deleting ${saveName}`)
+    ProjectSaver.deleteOne({ saveName }).exec()
     return 'deleted'
   }
 }
