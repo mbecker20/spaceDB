@@ -42,12 +42,12 @@ class ContainerSaveService {
 
   async update(saveName: string, containerSave: ContainerSave) {
     //StateSaver.replaceOne({ saveName }, { saveName, state })
-    console.log(`updating ${name}`)
+    console.log(`updating ${saveName}`)
     ContainerSaver.deleteOne({ saveName }).exec()
     ContainerSaver.create(containerSave, (err: any) => {
       if (err) throw err
     })
-    return 'submitted'
+    return 'updated'
   }
 
   async remove(saveName: string) {
