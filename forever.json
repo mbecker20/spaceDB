@@ -1,0 +1,10 @@
+{
+  "uid": "spaceDB",
+  "append": true,
+  "watch": true,
+  "script": "spaceDB.ts",
+  "sourceDir": "/spaceDB/src",
+  "logFile": "/spaceDB/forever.log",
+  "outFile": "/spaceDB/out.log",
+  "errFile": "/spaceDB/error.log"
+}
