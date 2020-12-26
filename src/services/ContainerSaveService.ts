@@ -1,11 +1,4 @@
-import ContainerSaver from '../schema/ContainerSaver'
-
-export interface ContainerSave {
-  saveName: string,
-  containerID: string,
-  modules: any,
-  connections: any,
-}
+import ContainerSaver, { ContainerSave } from '../schema/ContainerSaver'
 
 class ContainerSaveService {
   async find() {

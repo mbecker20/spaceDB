@@ -1,9 +1,4 @@
-import ProjectSaver from '../schema/ProjectSaver'
-
-export interface ProjectSave {
-  saveName: string,
-  state: any,
-}
+import ProjectSaver, { ProjectSave } from '../schema/ProjectSaver'
 
 class ProjectSaveService {
   async find() {
